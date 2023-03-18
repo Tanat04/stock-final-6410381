@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from "next/router";
 
 export default function Home({ suppliers }) {
+
+  const router = useRouter()
 
   function deletesupplier(id) {
     fetch(`/api/stockFinal/suppliers/${id}`,
@@ -47,7 +50,7 @@ export default function Home({ suppliers }) {
                   <td style={{textAlign:'center'}}>{supplier.phoneNumber}</td>
                   <td>                      
                       <>
-                        <Link href={`/supplier/update/${supplier._id}`}>Update</Link>
+                        <button onClick={() => { router.push(`/supplier/update/${supplier._id}`); }}>Update</button>
                         &nbsp;&nbsp;&nbsp;
                         <button onClick={() => deletesupplier(supplier._id)}>Delete</button>
                       </>
