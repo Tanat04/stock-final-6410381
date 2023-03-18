@@ -1,8 +1,5 @@
-import dbConnect from "@/../lib/dbConnect";
-import supplier from "@/../models/Supplier";
-
-// import dbConnect from "../../../../../lib/dbConnect";
-// import supplier from "../../../../../models/Supplier";
+import dbConnect from "../../../../../lib/dbConnect";
+import supplier from "../../../../../models/Supplier";
 
 // import dbConnect from "@/lib/dbConnect";
 // import supplier from "@/models/Supplier";
