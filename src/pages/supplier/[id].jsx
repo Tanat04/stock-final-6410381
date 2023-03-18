@@ -1,6 +1,21 @@
 import Head from "next/head"
 import Link from "next/link"
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button';
+import {Navbar, NavDropdown, Container, Nav} from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
+
+const styles = {
+    brand: {
+      marginLeft: '100px',
+      fontSize: '24px',
+      fontWeight: '600',
+    },
+  };
+
+  
 // Step 2: This component is rendered from the server (Server-Side Rendering) SSR
 export default function Supplier({ supplier }) {
   console.log('Supplier 2', supplier)
@@ -16,10 +31,26 @@ export default function Supplier({ supplier }) {
       <Head>
         <title>{supplier.name}</title>
       </Head>
-      <h1>{supplier.supplierName}</h1>
-      <p>Supplier&apos;s Address: {supplier.address}</p>
-      <p>Supplier&apos;s Phone Number: {supplier.phoneNumber}</p>
-      <Link href="/">Back</Link>
+
+      <Navbar bg="light" expand="lg">
+      <Navbar.Brand style={styles.brand} href="/">
+        Suppliers Management
+      </Navbar.Brand>
+    </Navbar>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10em' }}>
+      <Card style={{ width: '40rem' }}>
+      <Card.Body>
+        <Card.Title style={{ fontSize: '2rem' }}>{supplier.supplierName}</Card.Title>
+      </Card.Body>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item style={{ fontSize: '1.2rem', marginTop: '0.4em', marginBottom: '0.4em'}}><b>Supplier&apos;s Address:</b> <u>{supplier.address}</u></ListGroup.Item>
+        <ListGroup.Item style={{ fontSize: '1.2rem' }}><b>Supplier&apos;s Phone Number:</b> <u>{supplier.phoneNumber}</u></ListGroup.Item>
+      </ListGroup>
+      <Card.Body>
+        <Button variant="primary" href="/">Go Back</Button>
+      </Card.Body>
+    </Card>
+    </div>
     </>
   )
 }

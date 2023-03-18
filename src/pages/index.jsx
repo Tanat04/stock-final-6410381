@@ -1,6 +1,22 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from "next/router";
+import "bootstrap/dist/css/bootstrap.min.css";
+import {Navbar, NavDropdown, Container, Nav, Button, Table} from "react-bootstrap";
+
+const styles = {
+  addButton: {
+    marginLeft: '860px',
+    marginBottom: '1.5em',
+    fontFamily: 'Arial',
+    fontWeight: 'bold',
+  },
+  brand: {
+    marginLeft: '100px',
+    fontSize: '24px',
+    fontWeight: '600',
+  },
+};
 
 export default function Home({ suppliers }) {
 
@@ -23,44 +39,61 @@ export default function Home({ suppliers }) {
       <Head>
         <title>Suppliers Management</title>
       </Head>
-      <h1>suppliers</h1>
-          <p style={{ margin: '0.4rem' }}>
-            <Link href="/supplier/">+New Supplier</Link>
-          </p>
-      <table>
-        <thead>
-          <tr>
-            <th style={{width: '20rem'}}>Supplier Name</th>
-            <th style={{width: '10rem'}}>Address</th>
-            <th style={{width: '10rem'}}>Phone Number</th>
-            <th style={{width: '20rem'}}></th>
-            <th style={{width: '20rem'}}></th>
-          </tr>
-        </thead>
-        <tbody>
-          {suppliers.map(supplier => {             
-               return (
+      <Navbar bg="light" expand="lg">
+      <Navbar.Brand style={styles.brand} href="/">
+        Suppliers Management
+      </Navbar.Brand>
+    </Navbar>
+
+    <Container style={{ width: '69%', marginTop: '3em' }}>
+          <Link href="/supplier">
+          <Button style={styles.addButton} variant="primary">
+            +New Supplier
+          </Button>
+        </Link>
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>Supplier Name</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th style={{ width: "0rem" }}></th>
+                <th style={{ width: "0rem" }}></th>
+              </tr>
+            </thead>
+            <tbody>
+              {suppliers.map((supplier) => (
                 <tr key={supplier._id}>
-                  <td >
-                    <Link href={`/supplier/${supplier._id}`}>
+                  <td>
+                    <Link href={`/supplier/${supplier._id}`} style={{textDecoration: 'none', color: 'black'}}>
                       {supplier.supplierName}
                     </Link>
                   </td>
-                  <td style={{textAlign:'center'}}>{supplier.address}</td>
-                  <td style={{textAlign:'center'}}>{supplier.phoneNumber}</td>
-                  <td>                      
-                    <button onClick={() => { router.push(`/supplier/update/${supplier._id}`); }}>Update</button>                  
+                  <td>{supplier.address}</td>
+                  <td>{supplier.phoneNumber}</td>
+                  <td>
+                    <Button
+                      variant="outline-primary"
+                      onClick={() => {
+                        router.push(`/supplier/update/${supplier._id}`);
+                      }}
+                    >
+                      Update
+                    </Button>
                   </td>
-                  <td>                      
-                    <button onClick={() => deletesupplier(supplier._id, supplier.supplierName)}>Delete</button>
+                  <td>
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => deletesupplier(supplier._id, supplier.supplierName)}
+                    >
+                      Delete
+                    </Button>
                   </td>
                 </tr>
-              )
-            })
-          }
-        </tbody>
-      </table>
-
+              ))}
+            </tbody>
+          </Table>
+          </Container>
     </>
   )
 }
