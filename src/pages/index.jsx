@@ -39,9 +39,8 @@ export default function Home({ suppliers }) {
           </tr>
         </thead>
         <tbody>
-          {
-            suppliers.map(supplier => {
-              return (
+          {suppliers.map(supplier => {             
+               return (
                 <tr key={supplier._id}>
                   <td >
                     <Link href={`/supplier/${supplier._id}`}>
