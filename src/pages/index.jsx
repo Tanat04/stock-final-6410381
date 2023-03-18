@@ -26,7 +26,7 @@ export default function Home({ suppliers }) {
       </Head>
       <h1>suppliers</h1>
           <p style={{ margin: '0.4rem' }}>
-            <Link href="/supplier/supplier">+New Supplier</Link>
+            <Link href="/supplier/">+New Supplier</Link>
           </p>
       <table>
         <thead>
@@ -61,10 +61,9 @@ export default function Home({ suppliers }) {
           }
         </tbody>
       </table>
-      <hr/>
-      <Link href="/">Home</Link>
-      <p>
-      </p>
+      {/* <hr/>
+      <Link href="/">Home</Link> */}
+
 
     </>
   )

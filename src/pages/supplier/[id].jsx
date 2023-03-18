@@ -19,7 +19,7 @@ export default function Supplier({ supplier }) {
       <h1>{supplier.supplierName}</h1>
       <p>Supplier&apos;s Address: {supplier.address}</p>
       <p>Supplier&apos;s Phone Number: {supplier.phoneNumber}</p>
-      <Link href="/supplier">Back</Link>
+      <Link href="/">Back</Link>
     </>
   )
 }

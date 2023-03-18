@@ -35,7 +35,7 @@ export default function Supplier({ supplier }) {
       alert("Error: " + result.error)
     } else {
       alert("Supplier updated")
-      window.location.href = "/supplier"
+      window.location.href = "/"
     }
     console.log(result)
     setData(JSON.stringify(data))
@@ -45,7 +45,7 @@ export default function Supplier({ supplier }) {
   if (!supplier) return (
     <div>
       <p>Supplier not found</p>
-      <Link href="/supplier">Back</Link>
+      <Link href="/">Back</Link>
     </div>
   );
 
@@ -92,7 +92,7 @@ export default function Supplier({ supplier }) {
       </form>
       </div>
 
-      <Link href="/supplier">Back</Link>
+      <Link href="/">Back</Link>
     </>
   )
 }
