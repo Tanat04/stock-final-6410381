@@ -7,7 +7,7 @@ export default function Home({ suppliers }) {
   const router = useRouter()
 
   function deletesupplier(id, supplierName) {
-    if (window.confirm(`Supplier "${supplierName}" will be deleted!`)) {
+    if (window.confirm(`Supplier ${supplierName} will be deleted!`)) {
       fetch(`/api/stockFinal/suppliers/${id}`, {
         method: "DELETE",
       })

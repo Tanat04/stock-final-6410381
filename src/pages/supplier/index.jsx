@@ -25,7 +25,7 @@ export default function AddSupplier() {
     if (result.error) {
       alert("Error: " + result.error);
     } else {
-      alert(`Supplier '${data.supplierName}' added`);
+      alert(`Supplier ${data.supplierName} added`);
       window.location.href = "/";
     }
     console.log(result);
@@ -71,7 +71,6 @@ export default function AddSupplier() {
         <br />
 
         <input type="submit" value="Add"/>
-        <p>{data}</p>
         <br />
       </form>
     </div>

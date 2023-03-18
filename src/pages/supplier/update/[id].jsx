@@ -87,7 +87,6 @@ export default function Supplier({ supplier }) {
         <br />
 
         <input type="submit" />
-        <p>{data}</p>
         <br />
       </form>
       </div>
