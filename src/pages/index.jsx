@@ -6,7 +6,7 @@ import {Navbar, NavDropdown, Container, Nav, Button, Table} from "react-bootstra
 
 const styles = {
   addButton: {
-    marginLeft: '860px',
+    marginLeft: '865px',
     marginBottom: '1.5em',
     fontFamily: 'Arial',
     fontWeight: 'bold',
@@ -48,7 +48,7 @@ export default function Home({ suppliers }) {
     <Container style={{ width: '69%', marginTop: '3em' }}>
           <Link href="/supplier">
           <Button style={styles.addButton} variant="primary">
-            +New Supplier
+            New Supplier
           </Button>
         </Link>
           <Table responsive>

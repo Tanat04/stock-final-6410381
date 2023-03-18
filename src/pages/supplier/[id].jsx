@@ -37,8 +37,12 @@ export default function Supplier({ supplier }) {
         Suppliers Management
       </Navbar.Brand>
     </Navbar>
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10em' }}>
-      <Card style={{ width: '40rem' }}>
+    
+    <div style={{display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        marginTop: "6rem", maxWidth: "35%", marginLeft: "30%"}}>
+      <Card style={{ width: '35rem' , border: '1px solid #ccc', padding: "2.5rem", borderRadius: "1.5rem",}}>
       <Card.Body>
         <Card.Title style={{ fontSize: '2rem' }}>{supplier.supplierName}</Card.Title>
       </Card.Body>

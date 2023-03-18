@@ -1,8 +1,25 @@
 import Head from "next/head"
 import Link from "next/link"
-
+import {
+    Container,
+    Form,
+    Button,
+    Row,
+    Col,
+    Navbar,
+    Nav,
+  } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+
+const styles = {
+    brand: {
+      marginLeft: '100px',
+      fontSize: '24px',
+      fontWeight: '600',
+    },
+  };
 
 
 
@@ -51,47 +68,72 @@ export default function Supplier({ supplier }) {
 
   return (
     <>
+    <Navbar bg="light" expand="lg">
+        <Navbar.Brand style={styles.brand} href="/">
+        Suppliers Management
+        </Navbar.Brand>
+    </Navbar>
+
       <Head>
         <title>Update {supplier.supplierName}</title>
       </Head>
 
-{/* <p>{JSON.stringify(supplier)}</p> */}
-      <div style={{ margin: '1rem' }}>
-        <form onSubmit={handleSubmit(updateSupplier)}>
-          <h1>Update Supplier</h1>
-        <label htmlFor="supplierName">Supplier Name</label>
-        <br />
-        <input
-          id="supplierName"
-          {...register("supplierName", { required: true })}
-          placeholder="Tanat Arora"
-        />
+    <Container
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        marginTop: "3rem", maxWidth: "35%", marginLeft: "30%", border: '1px solid #ccc', padding: "2.5rem", borderRadius: "1.5rem",
+      }}
+    >
+        <Form onSubmit={handleSubmit(updateSupplier)}>
+          <Row className="mb-4">
+            <Col>
+              <h1 className="text-center">Update Supplier</h1>
+            </Col>
+          </Row>
+
+        <Form.Group controlId="supplierName">
+            <Form.Label>Supplier Name</Form.Label>
+            <Form.Control
+              {...register("supplierName", { required: true })}
+              placeholder="Tanat Arora"
+            />
+          </Form.Group>
+          <br />
+
+        <Form.Group controlId="address">
+            <Form.Label>Address</Form.Label>
+            <Form.Control
+              {...register("address", { required: true })}
+              placeholder="123 Main Middle St."
+            />
+          </Form.Group>
+          <br />
+
+        <Form.Group controlId="phoneNumber">
+            <Form.Label>Phone Number</Form.Label>
+            <Form.Control
+              {...register("phoneNumber", { required: true })}
+              placeholder="555-123-1234"
+            />
+        </Form.Group>
         <br />
 
-        <label htmlFor="address">Address</label>
-        <br />
-        <input
-          id="address"
-          {...register("address", { required: true })}
-          placeholder="123 Main St."
-        />
-        <br />
+        <div
+          style={{display: "flex",
+          justifyContent: "center",
+          alignItems: "center",}}>
+            <Button variant="outline-secondary" href="/" style={{width: '7em',marginLeft: '12em'}}>
+            Back
+            </Button>
 
-        <label htmlFor="phoneNumber">Phone Number</label>
-        <br />
-        <input
-          id="phoneNumber"
-          {...register("phoneNumber", { required: true })}
-          placeholder="555-123-1234"
-        />
-        <br />
-
-        <input type="submit" />
-        <br />
-      </form>
-      </div>
-
-      <Link href="/">Back</Link>
+            <Button variant="primary" type="submit" style={{width: '7em', marginLeft: '1em'}}>
+            Save
+            </Button>
+        </div>
+      </Form>
+      </Container>
     </>
   )
 }
