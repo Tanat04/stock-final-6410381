@@ -6,17 +6,16 @@ export default function Home({ suppliers }) {
 
   const router = useRouter()
 
-  function deletesupplier(id) {
-    fetch(`/api/stockFinal/suppliers/${id}`,
-      {
-        method: 'DELETE'
+  function deletesupplier(id, supplierName) {
+    if (window.confirm(`Supplier "${supplierName}" will be deleted!`)) {
+      fetch(`/api/stockFinal/suppliers/${id}`, {
+        method: "DELETE",
       })
-      .then(res => res.json())
-      .then(data => {
-        // alert("Deleting " + id)
-        window.location.reload(false);
-      })
-
+        .then((res) => res.json())
+        .then((data) => {
+          window.location.reload(false);
+        });
+    }
   }
 
   return (
@@ -50,10 +49,10 @@ export default function Home({ suppliers }) {
                   <td style={{textAlign:'center'}}>{supplier.address}</td>
                   <td style={{textAlign:'center'}}>{supplier.phoneNumber}</td>
                   <td>                      
-                        <button onClick={() => { router.push(`/supplier/update/${supplier._id}`); }}>Update</button>                  
+                    <button onClick={() => { router.push(`/supplier/update/${supplier._id}`); }}>Update</button>                  
                   </td>
                   <td>                      
-                        <button onClick={() => deletesupplier(supplier._id)}>Delete</button>
+                    <button onClick={() => deletesupplier(supplier._id, supplier.supplierName)}>Delete</button>
                   </td>
                 </tr>
               )
@@ -61,9 +60,6 @@ export default function Home({ suppliers }) {
           }
         </tbody>
       </table>
-      {/* <hr/>
-      <Link href="/">Home</Link> */}
-
 
     </>
   )
@@ -71,5 +67,7 @@ export default function Home({ suppliers }) {
 export async function getServerSideProps() {
   const res = await fetch(`https://stock-final-6410381.vercel.app/api/stockFinal/suppliers`)
   const suppliers = await res.json()
+  suppliers.sort((a, b) => a.supplierName.localeCompare(b.supplierName));
+
   return { props: { suppliers } }
 }
