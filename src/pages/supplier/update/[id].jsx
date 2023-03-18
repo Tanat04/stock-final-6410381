@@ -13,7 +13,7 @@ export default function Supplier({ supplier }) {
 
   useEffect(() => {
     reset(supplier)
-  }, [])
+  }, [reset, supplier])
 
   const updateSupplier = async (data) => {
     const response = await fetch(`/api/stockFinal/suppliers/${supplier._id}`, {
