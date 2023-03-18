@@ -1,5 +1,8 @@
-import dbConnect from "@/lib/dbConnect";
-import supplier from "@/models/Supplier";
+import dbConnect from "../../../../../lib/dbConnect";
+import supplier from "../../../../../models/Supplier";
+
+// import dbConnect from "@/lib/dbConnect";
+// import supplier from "@/models/Supplier";
 
 export default async function handler(req, res) {
   await dbConnect();
